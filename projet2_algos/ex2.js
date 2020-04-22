@@ -1,7 +1,8 @@
 let fs = require("fs");
+
 fs.readFile(process.argv[2], "utf8", (error, data) => {
-  newData = data.split(" ").map(Number);
-  selectionSort(newData, newData.length);
+  numbers = data.split(" ").map(Number);
+  selectionSort(numbers, numbers.length);
 });
 
 const selectionSort = (buildings, n) => {
