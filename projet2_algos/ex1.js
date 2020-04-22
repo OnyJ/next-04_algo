@@ -7,5 +7,16 @@ compare = (numbers, k) => {
   return false;
 };
 
-console.log(compare([10, 15, 3, 7], 17));
-console.log(compare([1, 8, 10, 21], 19));
+let fs = require("fs");
+
+fs.readFile(process.argv[2], "utf8", (error, data) => {
+  // Instructions
+  console.log(
+    "(Lancer le programme se fait de la meme maniere que les autres exos."
+  );
+  console.log("Il faut juste choisir le nombre k à la main.)");
+
+  numbers = data.split(" ").map(Number);
+  console.log(numbers);
+  console.log(compare(numbers, 10));
+});
