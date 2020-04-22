@@ -4,16 +4,6 @@ class Classifier {
   }
 
   checkErrors() {
-    // fs.stat(this.data, function (err, stats) {
-    // if (err) {
-    // switch (err.code) {
-    // case "ENOENT":
-    // console.log(this.data + " does not exist");
-    // break;
-    // }
-    // return;
-    // }
-    // });
     if (this.data == "") return console.error("The file is empty");
     for (let i = 0; i < data.length - 1; i++) {
       if (
