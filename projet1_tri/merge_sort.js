@@ -1,34 +1,36 @@
-const mergeSort = (arrA, arrB) => {
-  let singleSorted = [];
-  while (arrA.length && arrB.length) {
-    if (arrA[0] < arrB[0]) {
-      singleSorted.push(arrA[0]);
-      arrA.shift();
-    } else {
-      singleSorted.push(arrB[0]);
-      arrB.shift();
-    }
-  }
-  console.log(arrB);
-  console.log;
-  return singleSorted.concat(arrA, arrB);
-};
-
-checkError = (array) => {
-  if (array == "") return console.error("The file is empty");
-  // Valid characters
-  for (let i = 0; i < array.length - 1; i++) {
-    if (array[i] < 0 && array[i] > 9 && array[i] != " " && array[i] != "-")
-      return console.error(
-        "There must be only numbers, spaces and '-' symbols"
-      );
-  }
-};
 let fs = require("fs");
-let arrA = fs.readFileSync(process.argv[2], "utf8");
-let arrB = fs.readFileSync(process.argv[3], "utf8");
-checkError(arrA);
-checkError(arrB);
-console.log(arrA);
-console.log(arrB);
-console.log(mergeSort(arrA, arrB));
+
+fs.readFile(process.argv[2], "utf8", (error, data) => {
+  if (error) return console.log(error);
+  mainMerge(data.split(" ").map(Number));
+});
+
+const mainMerge = (array) => {
+  let count = 0;
+
+  const merge = (arrA, arrB) => {
+    const array = [];
+    while (arrA.length && arrB.length) {
+      if (arrA[0] < arrB[0]) {
+        array.push(arrA.shift());
+      } else {
+        array.push(arrB.shift());
+      }
+    }
+    return array.concat(arrA).concat(arrB);
+  };
+
+  const divide = (array) => {
+    if (array.length <= 1) {
+      return array;
+    }
+    const half = Math.floor(array.length / 2);
+    const arrA = array.slice(0, half);
+    const arrB = array.slice(half);
+    count++;
+    return merge(divide(arrA), divide(arrB), count);
+  };
+
+  array = divide(array);
+  console.log(`Merge sort : ${count} comparisons | ${array}`);
+};
