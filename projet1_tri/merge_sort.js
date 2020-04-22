@@ -1,4 +1,4 @@
-const mergeSort = function (arrA, arrB) {
+const mergeSort = (arrA, arrB) => {
   let singleSorted = [];
   while (arrA.length && arrB.length) {
     if (arrA[0] < arrB[0]) {
@@ -14,48 +14,21 @@ const mergeSort = function (arrA, arrB) {
   return singleSorted.concat(arrA, arrB);
 };
 
-let arrA = [
-  0,
-  1,
-  3,
-  4,
-  4,
-  5,
-  7,
-  10,
-  13,
-  14,
-  16,
-  17,
-  18,
-  19,
-  21,
-  24,
-  25,
-  27,
-  28,
-  30,
-];
-let arrB = [
-  1,
-  2,
-  3,
-  5,
-  7,
-  8,
-  10,
-  11,
-  12,
-  13,
-  15,
-  18,
-  22,
-  22,
-  23,
-  25,
-  28,
-  28,
-  29,
-  29,
-];
+checkError = (array) => {
+  if (array == "") return console.error("The file is empty");
+  // Valid characters
+  for (let i = 0; i < array.length - 1; i++) {
+    if (array[i] < 0 && array[i] > 9 && array[i] != " " && array[i] != "-")
+      return console.error(
+        "There must be only numbers, spaces and '-' symbols"
+      );
+  }
+};
+let fs = require("fs");
+let arrA = fs.readFileSync(process.argv[2], "utf8");
+let arrB = fs.readFileSync(process.argv[3], "utf8");
+checkError(arrA);
+checkError(arrB);
+console.log(arrA);
+console.log(arrB);
 console.log(mergeSort(arrA, arrB));
