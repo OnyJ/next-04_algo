@@ -6,9 +6,9 @@
 
 - In the first folder are sorting projects. To use it just run
 
-  - `node sorting_functions.js list.txt` in the console to see Bubble and Insert sorting programs, working with `file.txt` numbers.
-  - `node merge_sort.js numbers_merge1.txt numbers_merge2.txt` to see the Merge sort program in action. You can change numbers files for other tests.
+  - `node sorting_functions.js list.txt` in the console to see Bubble and Insert sorting programs, working with `list.txt` and `list2.txt` numbers.
+  - `node merge_sort.js` to see the Merge sort program in action (using `list.txt` and `list2.txt`). You can change numbers in files for other tests.
 
-- And more algorithms in the second folder to run the same way.
+- And more algorithms, project 2, in the second folder to run the same way.
 
 Enjoy
